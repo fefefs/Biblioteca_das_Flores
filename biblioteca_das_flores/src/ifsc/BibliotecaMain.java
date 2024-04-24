@@ -8,15 +8,34 @@ public class BibliotecaMain {
 
 	public static void main(String[] args) {
 		
-		ArrayList<Livro> estoque = new ArrayList<>();
+		ArrayList<Livro> acervo = new ArrayList<>();
 		int r = -1;
 		while (r  != 0) {
 			
 			switch (r) {
 			
 			case 1 :
+				String nomeLivro = JOptionPane.showInputDialog("Digite o nome do livro : ");
+				String cod = JOptionPane.showInputDialog("Digite o codigo do livro : ");
+				long codigo = Long.valueOf(cod);
+				String qntPg = JOptionPane.showInputDialog("Digite a quantidade de paginas : ");
+				Integer qtPaginas = Integer.valueOf(qntPg);
+				String dp = JOptionPane.showInputDialog("Este livro esta disponivel para aluguel : ");
+				boolean disp = Boolean.valueOf(dp);
+				Autor autor = new Autor();
+				String nA = JOptionPane.showInputDialog("Digite o nome do autor : ");
+				autor.setNomedoautor(nA);
 				
-				//cadastro
+				
+				Livro livro = new Livro();
+				livro.setNomeLivro(nomeLivro);
+				livro.setId(codigo);
+				livro.setNomeAutor(autor);
+				livro.setDisponivel(disp);
+				livro.setQuantPaginas(qtPaginas);
+				
+				acervo.add(livro);
+				
 				break;
 				
 			case 2 :
