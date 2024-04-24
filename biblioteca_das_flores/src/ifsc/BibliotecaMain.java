@@ -11,7 +11,8 @@ public class BibliotecaMain {
 		ArrayList<Livro> acervo = new ArrayList<>();
 		int r = -1;
 		while (r  != 0) {
-			
+			String op = JOptionPane.showInputDialog(null, "menu \n 0-Sair \n 1-Cadastro \n 2-Listar \n 3-Buscar \n 4-Atualizar \n 5-Excluir");
+			r = Integer.valueOf(op);
 			switch (r) {
 			
 			case 1 :
