@@ -40,8 +40,16 @@ public class BibliotecaMain {
 				break;
 				
 			case 2 :
+				for (Livro livro2 : acervo) {
+					System.out.println("O nome do livro e:"+livro2.getNomeLivro());	
+					System.out.println("O codigo e:"+livro2.getId());
+					System.out.println("O nome do autor e:"+livro2.getNomeAutor());
+					System.out.println("A disponibilidade:"+livro2.isDisponivel());
+					System.out.println("A quantidade de paginas e:"+livro2.getQuantPaginas());
+				}
 				
-				//mostrar todos os livros
+				
+			
 				break;
 				
 			case 3 :
