@@ -41,11 +41,11 @@ public class BibliotecaMain {
 				
 			case 2 :
 				for (Livro livro2 : acervo) {
-					System.out.println("O nome do livro e:"+livro2.getNomeLivro());	
-					System.out.println("O codigo e:"+livro2.getId());
-					System.out.println("O nome do autor e:"+livro2.getNomeAutor());
-					System.out.println("A disponibilidade:"+livro2.isDisponivel());
-					System.out.println("A quantidade de paginas e:"+livro2.getQuantPaginas());
+					JOptionPane.showMessageDialog(null, "O nome do livro e:"+livro2.getNomeLivro());
+					JOptionPane.showMessageDialog(null,"O codigo e:"+livro2.getId());
+					JOptionPane.showMessageDialog(null,"O nome do autor e:"+livro2.getNomeAutor());
+					JOptionPane.showMessageDialog(null,"A disponibilidade:"+livro2.isDisponivel());
+					JOptionPane.showMessageDialog(null,"A quantidade de paginas e:"+livro2.getQuantPaginas());
 				}
 				
 				
@@ -56,7 +56,41 @@ public class BibliotecaMain {
 				//buscar por codigo
 				break;
 			case 4 :
-				//atualizar
+				
+				String Categoriaalterar = JOptionPane.showInputDialog("O que voce deseja mudar?\n Opçoes:\nNomeLivro\nNomeAutor\nDisponivel\nQuantPaginas");
+				
+							
+				for (Livro livro2 : acervo) {
+					
+					if (Categoriaalterar.equals (livro2.getNomeLivro())) {
+					String novonome = JOptionPane.showInputDialog("Qual o novo nome do livro");
+						 livro2.setNomeLivro( novonome); 
+						
+					}
+					
+					if (Categoriaalterar.equals (livro2.getNomeAutor())) {
+						String novonomeautor = JOptionPane.showInputDialog("Qual o novo nome do autor");
+							 livro2.setNomeAutor(novonomeautor); 
+							
+						}
+					
+					if (Categoriaalterar.equals (livro2.isDisponivel())) {
+						String novadisponibilidade = JOptionPane.showInputDialog("Qual a diponibilidade");
+							 livro2.setDisponivel(novadisponibilidade); 
+							
+						}
+					if (Categoriaalterar.equals (livro2.getQuantPaginas())) {
+						String novaquantpagi = JOptionPane.showInputDialog("Qual a quantidade de paginas");
+							 livro2.setQuantPaginas( novaquantpagi); 
+							
+						}
+					if (Categoriaalterar.equals (livro2.getId())) {
+						JOptionPane.showMessageDialog(null,"Nao pode alterar");
+														
+						}
+				}
+
+			
 				break;
 			case 5 :
 				//excluir
