@@ -1,12 +1,19 @@
 package ifsc;
 
-import java.util.ArrayList;
-
 public class Autor {
 
+	private int id;
 	private String nomedoautor;
 	private String biografia;
-	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getNomedoautor() {
 		return nomedoautor;
 	}
@@ -22,14 +29,4 @@ public class Autor {
 	public void setBiografia(String biografia) {
 		this.biografia = biografia;
 	}
-
-	public ArrayList<String> getLivros() {
-		return livros;
-	}
-
-	public void setLivros(ArrayList<String> livros) {
-		this.livros = livros;
-	}
-
-	private ArrayList<String> livros;
 }

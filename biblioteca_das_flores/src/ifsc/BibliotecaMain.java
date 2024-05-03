@@ -3,17 +3,22 @@ package ifsc;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 public class BibliotecaMain {
-	
+
+	private static ArrayList<Autor> autores = new ArrayList<>();
+
 	public static void criaAutores() {
-		
+		Autor vitorMartins = new Autor();
+		vitorMartins.setId(1);
+		vitorMartins.setNomedoautor("Vitor Martins");
+		vitorMartins.setBiografia("Muito legal");
+		autores.add(vitorMartins);
 	}
 
 	public static void main(String[] args) {
-		
+
 		criaAutores();
-		
+
 		Scanner leitura = new Scanner(System.in);
 
 		ArrayList<Livro> acervo = new ArrayList<>();
@@ -92,7 +97,7 @@ public class BibliotecaMain {
 				long idBusca = Long.valueOf(id);
 
 				for (Livro livro3 : acervo) {
-					if ((livro.getId()) == idBusca) {
+					if ((livro3.getId()) == idBusca) {
 						System.out.println("O nome do livro :" + livro3.getNomeLivro());
 						System.out.println("O codigo :" + livro3.getId());
 						System.out.println("O nome do autor :" + livro3.getAutor());
@@ -112,7 +117,7 @@ public class BibliotecaMain {
 			case 4:
 
 				System.out
-						.println("O que voce deseja mudar?\n Opçoes:\nNomeLivro\nNomeAutor\nDisponivel\nQuantPaginas");
+						.println("O que voce deseja mudar?\n Opçoes:\nNomeLivro\nAutor\nDisponivel\nQuantPaginas");
 				String Categoriaalterar = leitura.nextLine();
 
 				for (Livro livro2 : acervo) {
@@ -124,12 +129,21 @@ public class BibliotecaMain {
 
 					}
 
-					if (Categoriaalterar.equals("NomeAutor")) {
+					if (Categoriaalterar.equals("Autor")) {
 
-						System.out.println("Qual o novo nome do autor");
-						String novonomeautor = leitura.nextLine();
-						livro2.setAutor(novonomeautor); // deve colocar obj autor aqui e nao uma string
- 
+						for (Autor novoAutor : autores) {
+							System.out.println(novoAutor.getId() + " " + novoAutor.getNomedoautor());
+						}
+						System.out.println("Digite o id do novo autor:");
+
+						String idAutor = leitura.nextLine();
+						int idAutorInt = Integer.valueOf(idAutor);
+						for (Autor novoAutor : autores) {
+							if (idAutorInt == novoAutor.getId()) {
+								livro2.setAutor(novoAutor);
+							}
+						}
+
 					}
 
 					if (Categoriaalterar.equals(livro2.isDisponivel())) {
@@ -138,7 +152,7 @@ public class BibliotecaMain {
 						String novaDispo = leitura.nextLine();
 						if (novaDispo.equals("sim")) {
 							livro2.setDisponivel(true);
-						} else if(novaDispo.equals("não")) {
+						} else if (novaDispo.equals("não")) {
 							livro2.setDisponivel(false);
 						}
 
