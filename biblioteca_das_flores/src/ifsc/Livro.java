@@ -14,13 +14,13 @@ public class Livro {
 		this.nomeLivro = nomeLivro;
 	}
 	//*******//
-	private Autor nomeAutor;
-	public Autor getNomeAutor() {
-		return nomeAutor;
+	private Autor autor;
+	public Autor getAutor() {
+		return autor;
 	}
 
-	public void setNomeAutor(Autor nomeAutor) {
-		this.nomeAutor = nomeAutor;
+	public void setAutor(Autor nomeAutor) {
+		this.autor = nomeAutor;
 	}
 
 	//*******//
