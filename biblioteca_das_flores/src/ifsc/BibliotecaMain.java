@@ -17,12 +17,14 @@ public class BibliotecaMain {
 		Scanner leitura = new Scanner(System.in);
 
 		ArrayList<Livro> acervo = new ArrayList<>();
+		
 		int r = -1;
 		while (r != 0) {
-			System.out.println("menu \n 0-Sair \n 1-Cadastro \n 2-Listar \n 3-Buscar \n 4-Atualizar \n 5-Excluir");
+			
+			System.out.println("********MENU******** \n\n 0-Sair \n 1-Cadastro \n 2-Listar \n 3-Buscar \n 4-Atualizar \n 5-Excluir\n\n********************");
 			String op = leitura.nextLine();
-
 			r = Integer.valueOf(op);
+			
 			switch (r) {
 
 			case 1:
@@ -32,15 +34,30 @@ public class BibliotecaMain {
 				System.out.println("Digite o codigo do livro : ");
 				String cod = leitura.nextLine();
 				long codigo = Long.valueOf(cod);
-
+				
 				System.out.println("Digite a quantidade de paginas : ");
 				String qntPg = leitura.nextLine();
 				Integer qtPaginas = Integer.valueOf(qntPg);
+				while(qtPaginas <= 0) {
+					System.out.println("Quantidade de paginas invalida !!\nInsira novamente :");
+					 qntPg = leitura.nextLine();
+					 qtPaginas = Integer.valueOf(qntPg);
+				}
 
-				System.out.println("Este livro esta disponivel para aluguel : ");
+				System.out.println("Este livro esta disponivel para aluguel ?\n1-SIM\n2-NAO\n insira sua resposta : ");
 				String dp = leitura.nextLine();
-				boolean disp = Boolean.valueOf(dp);
-
+				Integer disp = Integer.valueOf(dp);
+				while (disp != 1 && disp != 2) {
+					System.out.println("Resposta invalida !!\nInsira novamente :");
+					 dp = leitura.nextLine();
+					 disp = Integer.valueOf(dp);
+				}
+				if (disp == 1) {
+					boolean disponivel=(true);
+				} else if(disp == 2) {
+					boolean disponivel=(false);
+				} 
+				
 				Autor autor = new Autor();
 				System.out.println("Digite o nome do autor : ");
 				String nA = leitura.nextLine();
@@ -50,7 +67,7 @@ public class BibliotecaMain {
 				livro.setNomeLivro(nomeLivro);
 				livro.setId(codigo);
 				livro.setAutor(autor);
-				livro.setDisponivel(disp);
+				livro.setDisponivel(disponivel);
 				livro.setQuantPaginas(qtPaginas);
 
 				acervo.add(livro);
