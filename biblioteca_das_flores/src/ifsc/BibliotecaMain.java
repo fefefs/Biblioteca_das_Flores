@@ -41,11 +41,11 @@ public class BibliotecaMain {
 				
 			case 2 :
 				for (Livro livro2 : acervo) {
-					JOptionPane.showMessageDialog(null, "O nome do livro e:"+livro2.getNomeLivro());
-					JOptionPane.showMessageDialog(null,"O codigo e:"+livro2.getId());
-					JOptionPane.showMessageDialog(null,"O nome do autor e:"+livro2.getNomeAutor());
-					JOptionPane.showMessageDialog(null,"A disponibilidade:"+livro2.isDisponivel());
-					JOptionPane.showMessageDialog(null,"A quantidade de paginas e:"+livro2.getQuantPaginas());
+					JOptionPane.showMessageDialog(null, "O nome do livro :"+livro2.getNomeLivro());
+					JOptionPane.showMessageDialog(null,"O codigo :"+livro2.getId());
+					JOptionPane.showMessageDialog(null,"O nome do autor :"+livro2.getNomeAutor());
+					JOptionPane.showMessageDialog(null,"A disponibilidade :"+livro2.isDisponivel());
+					JOptionPane.showMessageDialog(null,"A quantidade de paginas :"+livro2.getQuantPaginas());
 				}
 				
 				
@@ -53,7 +53,27 @@ public class BibliotecaMain {
 				break;
 				
 			case 3 :
-				//buscar por codigo
+				int verif = 0;
+				String id = JOptionPane.showInputDialog("Insira o codigo ID do livro que deseja procurar : ");
+				long idBusca = Long.valueOf(id);
+				
+				for (Livro livro3 : acervo) {
+					if ((livro.getId()) == idBusca) {
+						JOptionPane.showMessageDialog(null, "O nome do livro :"+livro3.getNomeLivro());
+						JOptionPane.showMessageDialog(null,"O codigo :"+livro3.getId());
+						JOptionPane.showMessageDialog(null,"O nome do autor :"+livro3.getNomeAutor());
+						JOptionPane.showMessageDialog(null,"A disponibilidade :"+livro3.isDisponivel());
+						JOptionPane.showMessageDialog(null,"A quantidade de paginas :"+livro3.getQuantPaginas());
+						
+						verif = 2;
+					} 
+					
+				}
+				if (verif != 2) {
+					
+					JOptionPane.showMessageDialog(null, "Este codigo ID nao foi encontrado em nosso acervo !");
+				}
+			
 				break;
 			case 4 :
 				
@@ -75,13 +95,14 @@ public class BibliotecaMain {
 						}
 					
 					if (Categoriaalterar.equals (livro2.isDisponivel())) {
-						String novadisponibilidade = JOptionPane.showInputDialog("Qual a diponibilidade");
-							 livro2.setDisponivel(novadisponibilidade); 
+						String novaDispo = JOptionPane.showInputDialog("Qual a diponibilidade");
+							 livro2.setDisponivel(novaDispo); 
 							
 						}
 					if (Categoriaalterar.equals (livro2.getQuantPaginas())) {
-						String novaquantpagi = JOptionPane.showInputDialog("Qual a quantidade de paginas");
-							 livro2.setQuantPaginas( novaquantpagi); 
+						String nqtp = JOptionPane.showInputDialog("Qual a quantidade de paginas");
+						Integer nQuantPg  = Integer.valueOf(nqtp);
+							 livro2.setQuantPaginas( nQuantPg); 
 							
 						}
 					if (Categoriaalterar.equals (livro2.getId())) {
@@ -93,7 +114,28 @@ public class BibliotecaMain {
 			
 				break;
 			case 5 :
-				//excluir
+				int verif2 = 0;
+				String idd = JOptionPane.showInputDialog("Insira o codigo ID do livro que deseja excluir : ");
+				long idDelete = Long.valueOf(idd);
+				
+				for (Livro livro3 : acervo) {
+					if ((livro.getId()) == idDelete) {
+						
+						acervo.remove(livro3);
+						
+						livro.setQuantPaginas(0);
+						
+						verif2 = 2;
+					} 
+					
+				}
+				if (verif2 != 2) {
+					
+					JOptionPane.showMessageDialog(null, "Este codigo ID nao foi encontrado em nosso acervo !");
+				}
+				
+				
+				
 				break;
 			default :
 				JOptionPane.showInputDialog("Opcao invalida !!");
