@@ -22,14 +22,15 @@ public class BibliotecaMain {
 		Scanner leitura = new Scanner(System.in);
 
 		ArrayList<Livro> acervo = new ArrayList<>();
-		
+
 		int r = -1;
 		while (r != 0) {
-			
-			System.out.println("********MENU******** \n\n 0-Sair \n 1-Cadastro \n 2-Listar \n 3-Buscar \n 4-Atualizar \n 5-Excluir\n\n********************");
+
+			System.out.println(
+					"********MENU******** \n\n 0-Sair \n 1-Cadastro \n 2-Listar \n 3-Buscar \n 4-Atualizar \n 5-Excluir\n\n********************");
 			String op = leitura.nextLine();
 			r = Integer.valueOf(op);
-			
+
 			switch (r) {
 
 			case 1:
@@ -39,14 +40,14 @@ public class BibliotecaMain {
 				System.out.println("Digite o codigo do livro : ");
 				String cod = leitura.nextLine();
 				long codigo = Long.valueOf(cod);
-				
+
 				System.out.println("Digite a quantidade de paginas : ");
 				String qntPg = leitura.nextLine();
 				Integer qtPaginas = Integer.valueOf(qntPg);
-				while(qtPaginas <= 0) {
+				while (qtPaginas <= 0) {
 					System.out.println("Quantidade de paginas invalida !!\nInsira novamente :");
-					 qntPg = leitura.nextLine();
-					 qtPaginas = Integer.valueOf(qntPg);
+					qntPg = leitura.nextLine();
+					qtPaginas = Integer.valueOf(qntPg);
 				}
 
 				System.out.println("Este livro esta disponivel para aluguel ?\n1-SIM\n2-NAO\n insira sua resposta : ");
@@ -54,15 +55,15 @@ public class BibliotecaMain {
 				Integer disp = Integer.valueOf(dp);
 				while (disp != 1 && disp != 2) {
 					System.out.println("Resposta invalida !!\nInsira novamente :");
-					 dp = leitura.nextLine();
-					 disp = Integer.valueOf(dp);
+					dp = leitura.nextLine();
+					disp = Integer.valueOf(dp);
 				}
 				if (disp == 1) {
-					boolean disponivel=(true);
-				} else if(disp == 2) {
-					boolean disponivel=(false);
-				} 
-				
+					boolean disponivel = (true);
+				} else if (disp == 2) {
+					boolean disponivel = (false);
+				}
+
 				Autor autor = new Autor();
 				System.out.println("Digite o nome do autor : ");
 				String nA = leitura.nextLine();
@@ -72,7 +73,7 @@ public class BibliotecaMain {
 				livro.setNomeLivro(nomeLivro);
 				livro.setId(codigo);
 				livro.setAutor(autor);
-				livro.setDisponivel(disponivel);
+				livro.setDisponivel(true);
 				livro.setQuantPaginas(qtPaginas);
 
 				acervo.add(livro);
@@ -116,8 +117,7 @@ public class BibliotecaMain {
 				break;
 			case 4:
 
-				System.out
-						.println("O que voce deseja mudar?\n Opçoes:\nNomeLivro\nAutor\nDisponivel\nQuantPaginas");
+				System.out.println("O que voce deseja mudar?\n Opçoes:\nNomeLivro\nAutor\nDisponivel\nQuantPaginas");
 				String Categoriaalterar = leitura.nextLine();
 
 				for (Livro livro2 : acervo) {
@@ -180,11 +180,11 @@ public class BibliotecaMain {
 				long idDelete = Long.valueOf(idd);
 
 				for (Livro livro3 : acervo) {
-					if ((livro.getId()) == idDelete) {
+					if ((livro3.getId()) == idDelete) {
 
 						acervo.remove(livro3);
 
-						livro.setQuantPaginas(0);
+						livro3.setQuantPaginas(0);
 
 						verif2 = 2;
 					}
