@@ -111,9 +111,9 @@ public class BibliotecaMain {
 									
 					System.out.println("A disponibilidade :" + livro2.isDisponivel());
 					System.out.println("A quantidade de paginas :" + livro2.getQuantPaginas());
-					for (Autor novoAutor : autores) {
-						System.out.println("O nome do autor :" + novoAutor.getIdAutor());
-					}
+					System.out.println("O nome do autor :" + livro2.getAutor().getNomedoautor());
+						System.out.println("  \n    ");
+					
 				}
 
 				break;
@@ -131,7 +131,7 @@ public class BibliotecaMain {
 						System.out.println("O nome do autor :" + livro3.getAutor());
 						System.out.println("A disponibilidade :" + livro3.isDisponivel());
 						System.out.println("A quantidade de paginas :" + livro3.getQuantPaginas());
-						System.out.println("  \n    ");
+						
 
 						verif = 2;
 					}
@@ -168,7 +168,7 @@ public class BibliotecaMain {
 							System.out.println("Nome do livro atualizado com sucesso");
 							
 						}
-							break;
+							
 						}
 						break;
 
@@ -236,9 +236,9 @@ public class BibliotecaMain {
 
 					}
 					}
-				System.out.println("Voce saiu da aba de atualizacoes");
+			
 				}
-
+				System.out.println("Voce saiu da aba de atualizacoes");
 				break;
 			case 5:
 				int verif2 = 0;
