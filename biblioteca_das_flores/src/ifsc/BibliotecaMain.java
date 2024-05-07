@@ -13,6 +13,25 @@ public class BibliotecaMain {
 		vitorMartins.setNomedoautor("Vitor Martins");
 		vitorMartins.setBiografia("Muito legal");
 		autores.add(vitorMartins);
+		
+		Autor ClariceLispector = new Autor();
+		ClariceLispector.setId(2);
+		ClariceLispector.setNomedoautor("Clarice Lispector");
+		ClariceLispector.setBiografia("Escritora e jornalista");
+		autores.add(ClariceLispector);
+		
+		Autor CoraCoralina = new Autor();
+		CoraCoralina.setId(3);
+		CoraCoralina.setNomedoautor("Anna Lins dos Guimarães Peixoto Bretas");
+		CoraCoralina.setBiografia("Poetisa brasileira");
+		autores.add(CoraCoralina);	
+		
+		Autor RickRiordan = new Autor();
+		RickRiordan.setId(4);
+		RickRiordan.setNomedoautor("Richard Russel Riordan Jr");
+		RickRiordan.setBiografia("Escritor norte-americano");
+		autores.add(RickRiordan);	
+		
 	}
 
 	public static void main(String[] args) {
@@ -28,6 +47,7 @@ public class BibliotecaMain {
 
 			System.out.println(
 					"********MENU******** \n\n 0-Sair \n 1-Cadastro \n 2-Listar \n 3-Buscar \n 4-Atualizar \n 5-Excluir\n\n********************");
+			System.out.println("Digite uma das opcoes acima");
 			String op = leitura.nextLine();
 			r = Integer.valueOf(op);
 
@@ -116,20 +136,27 @@ public class BibliotecaMain {
 
 				break;
 			case 4:
+				
+				
+				int Categoriaalterar = -1;
+				while(Categoriaalterar !=0) {
 
-				System.out.println("O que voce deseja mudar?\n Opçoes:\nNomeLivro\nAutor\nDisponivel\nQuantPaginas");
-				String Categoriaalterar = leitura.nextLine();
+				System.out.println("//////////////\nOpçoes para alterar:\n 0-Sair de alterar\n 1-Nome do livro\n 2-Autor\n 3-Livro disponivel\n 4-Quantidade de paginas\n///////////////\n");
+				System.out.println("O que voce deseja mudar? Por favor insera o numero da opcao \n");
+				String opcao = leitura.nextLine();
+				Categoriaalterar = Integer.valueOf(opcao);
 
 				for (Livro livro2 : acervo) {
 
-					if (Categoriaalterar.equals("NomeLivro")) {
+					if (Categoriaalterar == 1) {
 						System.out.println("Qual o novo nome do livro");
 						String novonome = leitura.nextLine();
 						livro2.setNomeLivro(novonome);
+						System.out.println("Nome do livro atualizado com sucesso");
 
 					}
 
-					if (Categoriaalterar.equals("Autor")) {
+					else if (Categoriaalterar == 2) {
 
 						for (Autor novoAutor : autores) {
 							System.out.println(novoAutor.getId() + " " + novoAutor.getNomedoautor());
@@ -141,12 +168,13 @@ public class BibliotecaMain {
 						for (Autor novoAutor : autores) {
 							if (idAutorInt == novoAutor.getId()) {
 								livro2.setAutor(novoAutor);
+								System.out.println("Autor atualizado com sucesso");
 							}
 						}
 
 					}
 
-					if (Categoriaalterar.equals(livro2.isDisponivel())) {
+					else if (Categoriaalterar == 3) {
 
 						System.out.println("Qual a diponibilidade");
 						String novaDispo = leitura.nextLine();
@@ -155,20 +183,23 @@ public class BibliotecaMain {
 						} else if (novaDispo.equals("não")) {
 							livro2.setDisponivel(false);
 						}
+						System.out.println("Disponibilidade atualizada com sucesso");
 
 					}
-					if (Categoriaalterar.equals(livro2.getQuantPaginas())) {
+					else if (Categoriaalterar == 4) {
 
 						System.out.println("Qual a quantidade de paginas");
 						String nqtp = leitura.nextLine();
 						Integer nQuantPg = Integer.valueOf(nqtp);
 						livro2.setQuantPaginas(nQuantPg);
+						System.out.println("A quantidade de paginas atualizada com sucesso");
+
+					}else {
+						System.out.println("Nao esta em opcao, escolha novamente");
 
 					}
-					if (Categoriaalterar.equals(livro2.getId())) {
-						System.out.println("Nao pode alterar");
-
 					}
+				System.out.println("Voce saiu da aba de atualizacoes");
 				}
 
 				break;
