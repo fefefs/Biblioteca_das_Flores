@@ -2,16 +2,18 @@ package ifsc;
 
 public class Autor {
 
-	private int id;
+	private int idAutor;
 	private String nomedoautor;
 	private String biografia;
 
-	public int getId() {
-		return id;
+	
+
+	public int getIdAutor() {
+		return idAutor;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdAutor(int idAutor) {
+		this.idAutor = idAutor;
 	}
 
 	public String getNomedoautor() {

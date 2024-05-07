@@ -9,25 +9,25 @@ public class BibliotecaMain {
 
 	public static void criaAutores() {
 		Autor vitorMartins = new Autor();
-		vitorMartins.setId(1);
+		vitorMartins.setIdAutor(1);
 		vitorMartins.setNomedoautor("Vitor Martins");
 		vitorMartins.setBiografia("Muito legal");
 		autores.add(vitorMartins);
 		
 		Autor ClariceLispector = new Autor();
-		ClariceLispector.setId(2);
+		ClariceLispector.setIdAutor(2);
 		ClariceLispector.setNomedoautor("Clarice Lispector");
 		ClariceLispector.setBiografia("Escritora e jornalista");
 		autores.add(ClariceLispector);
 		
 		Autor CoraCoralina = new Autor();
-		CoraCoralina.setId(3);
+		CoraCoralina.setIdAutor(3);
 		CoraCoralina.setNomedoautor("Anna Lins dos Guimarães Peixoto Bretas");
 		CoraCoralina.setBiografia("Poetisa brasileira");
 		autores.add(CoraCoralina);	
 		
 		Autor RickRiordan = new Autor();
-		RickRiordan.setId(4);
+		RickRiordan.setIdAutor(4);
 		RickRiordan.setNomedoautor("Richard Russel Riordan Jr");
 		RickRiordan.setBiografia("Escritor norte-americano");
 		autores.add(RickRiordan);	
@@ -85,9 +85,13 @@ public class BibliotecaMain {
 				}
 
 				Autor autor = new Autor();
-				System.out.println("Digite o nome do autor : ");
+				for (Autor novoAutor : autores) {
+					System.out.println(novoAutor.getIdAutor() + " " + novoAutor.getNomedoautor());
+				}
+				System.out.println("Digite o id do autor:");
 				String nA = leitura.nextLine();
-				autor.setNomedoautor(nA);
+				int idautor =Integer.valueOf(nA);
+				autor.setIdAutor(idautor);
 
 				Livro livro = new Livro();
 				livro.setNomeLivro(nomeLivro);
@@ -104,9 +108,12 @@ public class BibliotecaMain {
 				for (Livro livro2 : acervo) {
 					System.out.println("O nome do livro :" + livro2.getNomeLivro());
 					System.out.println("O codigo :" + livro2.getId());
-					System.out.println("O nome do autor :" + livro2.getAutor());
+									
 					System.out.println("A disponibilidade :" + livro2.isDisponivel());
 					System.out.println("A quantidade de paginas :" + livro2.getQuantPaginas());
+					for (Autor novoAutor : autores) {
+						System.out.println("O nome do autor :" + novoAutor.getIdAutor());
+					}
 				}
 
 				break;
@@ -170,14 +177,14 @@ public class BibliotecaMain {
 					else if (Categoriaalterar == 2) {
 
 						for (Autor novoAutor : autores) {
-							System.out.println(novoAutor.getId() + " " + novoAutor.getNomedoautor());
+							System.out.println(novoAutor.getIdAutor() + " " + novoAutor.getNomedoautor());
 						}
 						System.out.println("Digite o id do novo autor:");
 
 						String idAutor = leitura.nextLine();
 						int idAutorInt = Integer.valueOf(idAutor);
 						for (Autor novoAutor : autores) {
-							if (idAutorInt == novoAutor.getId()) {
+							if (idAutorInt == novoAutor.getIdAutor()) {
 								livro2.setAutor(novoAutor);
 								System.out.println("Autor atualizado com sucesso");
 							}
