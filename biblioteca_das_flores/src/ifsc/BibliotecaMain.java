@@ -124,6 +124,7 @@ public class BibliotecaMain {
 						System.out.println("O nome do autor :" + livro3.getAutor());
 						System.out.println("A disponibilidade :" + livro3.isDisponivel());
 						System.out.println("A quantidade de paginas :" + livro3.getQuantPaginas());
+						System.out.println("  \n    ");
 
 						verif = 2;
 					}
@@ -149,10 +150,20 @@ public class BibliotecaMain {
 				for (Livro livro2 : acervo) {
 
 					if (Categoriaalterar == 1) {
-						System.out.println("Qual o novo nome do livro");
-						String novonome = leitura.nextLine();
-						livro2.setNomeLivro(novonome);
-						System.out.println("Nome do livro atualizado com sucesso");
+						System.out.println("Qual o Id do livro?");
+						String idtxt = leitura.nextLine();
+						int codigover = Integer.valueOf(idtxt);
+						for (Livro livro3 : acervo) {
+							if(codigover == livro3.getId()) {
+							System.out.println("Qual o novo nome do livro");
+							String novonome = leitura.nextLine();
+							livro2.setNomeLivro(novonome);
+							System.out.println("Nome do livro atualizado com sucesso");
+							
+						}
+							break;
+						}
+						break;
 
 					}
 
@@ -171,28 +182,47 @@ public class BibliotecaMain {
 								System.out.println("Autor atualizado com sucesso");
 							}
 						}
+						break;
 
 					}
 
 					else if (Categoriaalterar == 3) {
-
+						
+						System.out.println("Qual o Id do livro?");
+					String	 idtxt1 = leitura.nextLine();
+					int codigover1 = Integer.valueOf(idtxt1);
+						for (Livro livro3 : acervo) {
+                      if(codigover1 == livro3.getId()) {
 						System.out.println("Qual a diponibilidade");
+						System.out.println("Digite 1 se esta disponinel e 2 caso esteja alugado");
 						String novaDispo = leitura.nextLine();
-						if (novaDispo.equals("sim")) {
+						int novaDispover =Integer.valueOf(novaDispo);
+						if (novaDispover == 1) {
 							livro2.setDisponivel(true);
-						} else if (novaDispo.equals("não")) {
+						} else if (novaDispover == 2) {
 							livro2.setDisponivel(false);
 						}
 						System.out.println("Disponibilidade atualizada com sucesso");
 
 					}
+						}
+						break;
+					}
 					else if (Categoriaalterar == 4) {
+						System.out.println("Qual o Id do livro?");
+						String idtxt2 = leitura.nextLine();
+						int codigover2 = Integer.valueOf(idtxt2);
+						for (Livro livro3 : acervo) {
+							if(codigover2 == livro3.getId()) {
 
 						System.out.println("Qual a quantidade de paginas");
 						String nqtp = leitura.nextLine();
 						Integer nQuantPg = Integer.valueOf(nqtp);
 						livro2.setQuantPaginas(nQuantPg);
 						System.out.println("A quantidade de paginas atualizada com sucesso");
+						}
+						}
+						break;
 
 					}else {
 						System.out.println("Nao esta em opcao, escolha novamente");
