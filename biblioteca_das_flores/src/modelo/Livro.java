@@ -1,6 +1,4 @@
-package visao;
-
-import modelo.Autor;
+package modelo;
 
 public class Livro {
 	

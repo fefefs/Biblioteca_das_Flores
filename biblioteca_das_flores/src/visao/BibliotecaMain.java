@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import modelo.Autor;
+import modelo.Livro;
 
 public class BibliotecaMain {
 
