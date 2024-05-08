@@ -8,6 +8,7 @@ public class BibliotecaMain {
 	private static ArrayList<Autor> autores = new ArrayList<>();
 
 	public static void criaAutores() {
+	
 		Autor vitorMartins = new Autor();
 		vitorMartins.setIdAutor(1);
 		vitorMartins.setNomedoautor("Vitor Martins");
@@ -52,11 +53,12 @@ public class BibliotecaMain {
 		poe.setIdAutor(10);
 		poe.setNomedoautor("Edgar Alan Poe");
 		autores.add(poe);
-		
 	}
+		
 
 	public static void main(String[] args) {
-
+		
+		
 		criaAutores();
 
 		Scanner leitura = new Scanner(System.in);
@@ -136,10 +138,10 @@ public class BibliotecaMain {
 				if (disp1 == 1) {
 					System.out.println("Digite o id do autor:");
 					String nA = leitura.nextLine();
-					int idAutor =Integer.valueOf(nA);
+					int idAutor = Integer.valueOf(nA);
 					
 					for (Autor autor2 : autores) {
-						if (autor.getIdAutor() == idAutor ) {
+						if (autor2.getIdAutor() == idAutor ) {
 							livro.setAutor(autor2);
 						}
 					}
@@ -176,7 +178,7 @@ public class BibliotecaMain {
 									
 					System.out.println("A disponibilidade :" + livro2.isDisponivel());
 					System.out.println("A quantidade de paginas :" + livro2.getQuantPaginas());
-					System.out.println("O nome do autor :" + livro2.getAutor().getNomedoautor());
+					System.out.println("O autor :" + livro2.getAutor().getNomedoautor());
 						System.out.println("  \n    ");
 					
 				}
