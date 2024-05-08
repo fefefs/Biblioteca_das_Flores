@@ -167,7 +167,7 @@ public class BibliotecaMain {
 			
 				acervo.add(livro);
 				
-				System.out.println("\nLivro cadastrado com sucesso !!");
+				System.out.println("\nLivro cadastrado com sucesso !!\n");
 
 				break;
 
@@ -195,7 +195,7 @@ public class BibliotecaMain {
 					if ((livro3.getId()) == idBusca) {
 						System.out.println("O nome do livro :" + livro3.getNomeLivro());
 						System.out.println("O codigo :" + livro3.getId());
-						System.out.println("O nome do autor :" + livro3.getAutor());
+						System.out.println("O autor :" + livro3.getAutor().getNomedoautor());
 						System.out.println("A disponibilidade :" + livro3.isDisponivel());
 						System.out.println("A quantidade de paginas :" + livro3.getQuantPaginas());
 						
@@ -206,7 +206,7 @@ public class BibliotecaMain {
 				}
 				if (verif != 2) {
 
-					System.out.println("Este codigo ID nao foi encontrado em nosso acervo !");
+					System.out.println("Este codigo ID nao foi encontrado em nosso acervo !!\n");
 				}
 
 				break;
@@ -216,7 +216,7 @@ public class BibliotecaMain {
 				int Categoriaalterar = -1;
 				while(Categoriaalterar !=0) {
 
-				System.out.println("//////////////\nOpçoes para alterar:\n 0-Sair de alterar\n 1-Nome do livro\n 2-Autor\n 3-Livro disponivel\n 4-Quantidade de paginas\n///////////////\n");
+				System.out.println("\n//////////////\nOpçoes para alterar:\n 0-Sair de alterar\n 1-Nome do livro\n 2-Autor\n 3-Livro disponivel\n 4-Quantidade de paginas\n///////////////\n");
 				System.out.println("O que voce deseja mudar? Por favor insera o numero da opcao \n");
 				String opcao = leitura.nextLine();
 				Categoriaalterar = Integer.valueOf(opcao);
@@ -250,19 +250,51 @@ public class BibliotecaMain {
 
 					else if (Categoriaalterar == 2) {
 
+						System.out.println("O autor novo deste livro já está cadastrado em nosso acervo ?");
 						for (Autor novoAutor : autores) {
-							System.out.println(novoAutor.getIdAutor() + " " + novoAutor.getNomedoautor());
+							System.out.println(novoAutor.getIdAutor() + " - " + novoAutor.getNomedoautor());
 						}
-						System.out.println("Digite o id do novo autor:");
-
-						String idAutor = leitura.nextLine();
-						int idAutorInt = Integer.valueOf(idAutor);
-						for (Autor novoAutor : autores) {
-							if (idAutorInt == novoAutor.getIdAutor()) {
-								livro2.setAutor(novoAutor);
-								System.out.println("Autor atualizado com sucesso!!");
+						
+						System.out.println("\n1-SIM\n2-NAO");
+						String dp2 = leitura.nextLine();
+						Integer disp2 = Integer.valueOf(dp2);
+						while (disp2 != 1 && disp2 != 2) {
+							System.out.println("Resposta invalida !!\nInsira novamente :");
+							dp2 = leitura.nextLine();
+							disp2 = Integer.valueOf(dp2);
+						}
+						
+						if (disp2 == 1) {
+							System.out.println("Digite o id do novo autor:");
+							String nA = leitura.nextLine();
+							int idAutor = Integer.valueOf(nA);
+							
+							for (Autor autor2 : autores) {
+								if (autor2.getIdAutor() == idAutor ) {
+									livro2.setAutor(autor2);
+								}
 							}
+						} else if (disp2 == 2) {
+							System.out.println("***Cadastre o autor(a)***\n\nInsira o nome do autor(a)");
+						
+							Autor autor2 = new Autor();
+							
+							 nomeAutor = leitura.nextLine();
+							autor2.setNomedoautor(nomeAutor);
+							
+							System.out.println("Insira o id do autor(a) :");
+							String idA = leitura.nextLine();
+							int idAut = Integer.valueOf(idA);
+							autor2.setIdAutor(idAut);
+							
+							autores.add(autor2);
+							livro2.setAutor(autor2);
+							
+							System.out.println("***Autor(a) cadastrado com sucesso !!***");
+							
 						}
+					
+						System.out.println("Autor atualizado com sucesso !!");
 						break;
 
 					}
@@ -308,7 +340,7 @@ public class BibliotecaMain {
 					}
 				  }
 				}
-				System.out.println("//////////////Voce saiu da aba de atualizacoes/////////////");
+				System.out.println("//////////////Voce saiu da aba de atualizacoes/////////////\n");
 			
 				break;
 				
@@ -330,9 +362,12 @@ public class BibliotecaMain {
 					}
 
 				}
+				
 				if (verif2 != 2) {
 
 					System.out.println("Este codigo ID nao foi encontrado em nosso acervo !");
+				} else {
+					System.out.println("Livro excluido com sucesso !!");
 				}
 
 				break;
