@@ -1,11 +1,10 @@
 package modelo;
 
 public class Livro {
-	
-	//*******//
+
+	// *******//
 	private String nomeLivro;
-	
-	
+
 	public String getNomeLivro() {
 		return nomeLivro;
 	}
@@ -13,8 +12,10 @@ public class Livro {
 	public void setNomeLivro(String nomeLivro) {
 		this.nomeLivro = nomeLivro;
 	}
-	//*******//
+
+	// *******//
 	private Autor autor;
+
 	public Autor getAutor() {
 		return autor;
 	}
@@ -23,18 +24,20 @@ public class Livro {
 		this.autor = nomeAutor;
 	}
 
-	//*******//
-	private long id;
-	public long getId() {
+	// *******//
+	private int id;
+
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
-	
-	//*******//
+
+	// *******//
 	private int quantPaginas;
+
 	public int getQuantPaginas() {
 		return quantPaginas;
 	}
@@ -43,8 +46,9 @@ public class Livro {
 		this.quantPaginas = quantPaginas;
 	}
 
-	//*******//
+	// *******//
 	private boolean disponivel;
+
 	public boolean isDisponivel() {
 		return disponivel;
 	}
@@ -52,8 +56,5 @@ public class Livro {
 	public void setDisponivel(boolean disponivel) {
 		this.disponivel = disponivel;
 	}
-	
-	
 
-	
 }

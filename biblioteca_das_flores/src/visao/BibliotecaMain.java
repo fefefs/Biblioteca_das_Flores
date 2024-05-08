@@ -3,6 +3,7 @@ package visao;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import controle.LivroDAO;
 import modelo.Autor;
 import modelo.Livro;
 
@@ -66,7 +67,7 @@ public class BibliotecaMain {
 
 		Scanner leitura = new Scanner(System.in);
 
-		ArrayList<Livro> acervo = new ArrayList<>();
+		
 
 		int r = -1;
 		while (r != 0) {
@@ -168,7 +169,8 @@ public class BibliotecaMain {
 					
 				}
 			
-				acervo.add(livro);
+				LivroDAO dao = new LivroDAO();
+				dao.cadastrar(livro);
 				
 				System.out.println("\nLivro cadastrado com sucesso !!\n");
 
