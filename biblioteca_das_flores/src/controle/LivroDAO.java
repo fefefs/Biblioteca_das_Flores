@@ -19,7 +19,7 @@ public class LivroDAO {
 		
 		if(livro!= null) {
 			livro.setId(geradorID);
-			geradorID++;//incrementar
+			geradorID++;
 			acervo.add(livro);
 		}
 		
