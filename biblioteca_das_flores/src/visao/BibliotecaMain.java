@@ -1,7 +1,9 @@
-package ifsc;
+package visao;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import modelo.Autor;
 
 public class BibliotecaMain {
 
@@ -355,8 +357,6 @@ public class BibliotecaMain {
 					if ((livro3.getId()) == idDelete) {
 
 						acervo.remove(livro3);
-
-						livro3.setQuantPaginas(0);
 
 						verif2 = 2;
 					}

@@ -1,4 +1,6 @@
-package ifsc;
+package visao;
+
+import modelo.Autor;
 
 public class Livro {
 	
