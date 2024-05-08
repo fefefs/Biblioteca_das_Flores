@@ -47,9 +47,16 @@ public class BibliotecaMain {
 
 			System.out.println(
 					"********MENU******** \n\n 0-Sair \n 1-Cadastro \n 2-Listar \n 3-Buscar \n 4-Atualizar \n 5-Excluir\n\n********************");
-			System.out.println("Digite uma das opcoes acima");
+			System.out.println("Digite uma das opcoes acima :");
 			String op = leitura.nextLine();
 			r = Integer.valueOf(op);
+			if ( r < 0 || r > 5) {
+				while (r < 0 || r > 5  ) {
+					System.out.println("Resposta invalida !!\nInsira novamente :");
+					op = leitura.nextLine();
+					r = Integer.valueOf(op);
+				}
+			}
 
 			switch (r) {
 
@@ -101,6 +108,8 @@ public class BibliotecaMain {
 				livro.setQuantPaginas(qtPaginas);
 
 				acervo.add(livro);
+				
+				System.out.println("\nLivro cadastrado com sucesso !!");
 
 				break;
 
@@ -153,6 +162,13 @@ public class BibliotecaMain {
 				System.out.println("O que voce deseja mudar? Por favor insera o numero da opcao \n");
 				String opcao = leitura.nextLine();
 				Categoriaalterar = Integer.valueOf(opcao);
+				if ( r < 0 || r > 4) {
+					while ( r < 0 || r > 4 ) {
+						System.out.println("Resposta invalida !!\nInsira novamente :");
+						opcao = leitura.nextLine();
+						Categoriaalterar = Integer.valueOf(opcao);
+					}
+				}
 
 				for (Livro livro2 : acervo) {
 
@@ -165,7 +181,7 @@ public class BibliotecaMain {
 							System.out.println("Qual o novo nome do livro");
 							String novonome = leitura.nextLine();
 							livro2.setNomeLivro(novonome);
-							System.out.println("Nome do livro atualizado com sucesso");
+							System.out.println("Nome do livro atualizado com sucesso!!");
 							
 						}
 							
@@ -186,7 +202,7 @@ public class BibliotecaMain {
 						for (Autor novoAutor : autores) {
 							if (idAutorInt == novoAutor.getIdAutor()) {
 								livro2.setAutor(novoAutor);
-								System.out.println("Autor atualizado com sucesso");
+								System.out.println("Autor atualizado com sucesso!!");
 							}
 						}
 						break;
@@ -209,7 +225,7 @@ public class BibliotecaMain {
 						} else if (novaDispover == 2) {
 							livro2.setDisponivel(false);
 						}
-						System.out.println("Disponibilidade atualizada com sucesso");
+						System.out.println("Disponibilidade atualizada com sucesso!!");
 
 					}
 						}
@@ -226,20 +242,18 @@ public class BibliotecaMain {
 						String nqtp = leitura.nextLine();
 						Integer nQuantPg = Integer.valueOf(nqtp);
 						livro2.setQuantPaginas(nQuantPg);
-						System.out.println("A quantidade de paginas atualizada com sucesso");
+						System.out.println("A quantidade de paginas atualizada com sucesso!!");
 						}
 						}
 						break;
 
-					}else {
-						System.out.println("Nao esta em opcao, escolha novamente");
-
 					}
-					}
-			
+				  }
 				}
-				System.out.println("Voce saiu da aba de atualizacoes");
+				System.out.println("//////////////Voce saiu da aba de atualizacoes/////////////");
+			
 				break;
+				
 			case 5:
 				int verif2 = 0;
 
@@ -263,9 +277,6 @@ public class BibliotecaMain {
 					System.out.println("Este codigo ID nao foi encontrado em nosso acervo !");
 				}
 
-				break;
-			default:
-				System.out.println("Opcao invalida !!");
 				break;
 
 			}
