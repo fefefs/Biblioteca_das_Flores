@@ -2,12 +2,8 @@ package ifsc;
 
 public class Autor {
 
+
 	private int idAutor;
-	private String nomedoautor;
-	private String biografia;
-
-	
-
 	public int getIdAutor() {
 		return idAutor;
 	}
@@ -16,6 +12,7 @@ public class Autor {
 		this.idAutor = idAutor;
 	}
 
+	private String nomedoautor;
 	public String getNomedoautor() {
 		return nomedoautor;
 	}
@@ -24,11 +21,5 @@ public class Autor {
 		this.nomedoautor = nomedoautor;
 	}
 
-	public String getBiografia() {
-		return biografia;
-	}
-
-	public void setBiografia(String biografia) {
-		this.biografia = biografia;
-	}
+	
 }

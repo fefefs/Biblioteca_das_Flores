@@ -11,26 +11,47 @@ public class BibliotecaMain {
 		Autor vitorMartins = new Autor();
 		vitorMartins.setIdAutor(1);
 		vitorMartins.setNomedoautor("Vitor Martins");
-		vitorMartins.setBiografia("Muito legal");
 		autores.add(vitorMartins);
 		
 		Autor ClariceLispector = new Autor();
 		ClariceLispector.setIdAutor(2);
 		ClariceLispector.setNomedoautor("Clarice Lispector");
-		ClariceLispector.setBiografia("Escritora e jornalista");
 		autores.add(ClariceLispector);
 		
 		Autor CoraCoralina = new Autor();
 		CoraCoralina.setIdAutor(3);
-		CoraCoralina.setNomedoautor("Anna Lins dos Guimarães Peixoto Bretas");
-		CoraCoralina.setBiografia("Poetisa brasileira");
+		CoraCoralina.setNomedoautor("Cora Coraline");
 		autores.add(CoraCoralina);	
 		
 		Autor RickRiordan = new Autor();
 		RickRiordan.setIdAutor(4);
-		RickRiordan.setNomedoautor("Richard Russel Riordan Jr");
-		RickRiordan.setBiografia("Escritor norte-americano");
-		autores.add(RickRiordan);	
+		RickRiordan.setNomedoautor("Rick Riordan");
+		autores.add(RickRiordan);
+		
+		Autor neilGaiman = new Autor();
+		neilGaiman.setIdAutor(5);
+		neilGaiman.setNomedoautor("Neil Gainman");
+		autores.add(neilGaiman);
+		
+		Autor elayneBaeta = new Autor();
+		elayneBaeta.setIdAutor(6);
+		elayneBaeta.setNomedoautor("Elayne Baeta");
+		autores.add(elayneBaeta);
+		
+		Autor stephenKing = new Autor();
+		stephenKing.setIdAutor(8);
+		stephenKing.setNomedoautor("Stephen King");
+		autores.add(stephenKing);
+		
+		Autor machadoAssis = new Autor();
+		machadoAssis.setIdAutor(9);
+		machadoAssis.setNomedoautor("Machado de Assis");
+		autores.add(machadoAssis);
+		
+		Autor poe = new Autor();
+		poe.setIdAutor(10);
+		poe.setNomedoautor("Edgar Alan Poe");
+		autores.add(poe);
 		
 	}
 
@@ -61,12 +82,16 @@ public class BibliotecaMain {
 			switch (r) {
 
 			case 1:
+				Livro livro = new Livro();
+				
 				System.out.println("Digite o nome do livro : ");
 				String nomeLivro = leitura.nextLine();
+				livro.setNomeLivro(nomeLivro);
 
 				System.out.println("Digite o codigo do livro : ");
 				String cod = leitura.nextLine();
 				long codigo = Long.valueOf(cod);
+				livro.setId(codigo);
 
 				System.out.println("Digite a quantidade de paginas : ");
 				String qntPg = leitura.nextLine();
@@ -76,6 +101,7 @@ public class BibliotecaMain {
 					qntPg = leitura.nextLine();
 					qtPaginas = Integer.valueOf(qntPg);
 				}
+				livro.setQuantPaginas(qtPaginas);
 
 				System.out.println("Este livro esta disponivel para aluguel ?\n1-SIM\n2-NAO\n insira sua resposta : ");
 				String dp = leitura.nextLine();
@@ -86,27 +112,57 @@ public class BibliotecaMain {
 					disp = Integer.valueOf(dp);
 				}
 				if (disp == 1) {
-					boolean disponivel = (true);
+					livro.setDisponivel(true);
 				} else if (disp == 2) {
-					boolean disponivel = (false);
+					livro.setDisponivel(false);
 				}
 
 				Autor autor = new Autor();
+				String nomeAutor;
+				System.out.println("O autor deste livro já está cadastrado em nosso acervo ?");
 				for (Autor novoAutor : autores) {
-					System.out.println(novoAutor.getIdAutor() + " " + novoAutor.getNomedoautor());
+					System.out.println(novoAutor.getIdAutor() + " - " + novoAutor.getNomedoautor());
 				}
-				System.out.println("Digite o id do autor:");
-				String nA = leitura.nextLine();
-				int idautor =Integer.valueOf(nA);
-				autor.setIdAutor(idautor);
-
-				Livro livro = new Livro();
-				livro.setNomeLivro(nomeLivro);
-				livro.setId(codigo);
-				livro.setAutor(autor);
-				livro.setDisponivel(true);
-				livro.setQuantPaginas(qtPaginas);
-
+				
+				System.out.println("\n1-SIM\n2-NAO");
+				String dp1 = leitura.nextLine();
+				Integer disp1 = Integer.valueOf(dp1);
+				while (disp1 != 1 && disp1 != 2) {
+					System.out.println("Resposta invalida !!\nInsira novamente :");
+					dp1 = leitura.nextLine();
+					disp1 = Integer.valueOf(dp1);
+				}
+				
+				if (disp1 == 1) {
+					System.out.println("Digite o id do autor:");
+					String nA = leitura.nextLine();
+					int idAutor =Integer.valueOf(nA);
+					
+					for (Autor autor2 : autores) {
+						if (autor.getIdAutor() == idAutor ) {
+							livro.setAutor(autor2);
+						}
+					}
+				} else if (disp1 == 2) {
+					System.out.println("***Cadastre o autor(a)***\n\nInsira o nome do autor(a)");
+				
+					Autor autorr = new Autor();
+					
+					 nomeAutor = leitura.nextLine();
+					autorr.setNomedoautor(nomeAutor);
+					
+					System.out.println("Insira o id do autor(a) :");
+					String idA = leitura.nextLine();
+					int idAut = Integer.valueOf(idA);
+					autorr.setIdAutor(idAut);
+					
+					autores.add(autorr);
+					livro.setAutor(autorr);
+					
+					System.out.println("***Autor(a) cadastrado com sucesso !!***");
+					
+				}
+			
 				acervo.add(livro);
 				
 				System.out.println("\nLivro cadastrado com sucesso !!");
