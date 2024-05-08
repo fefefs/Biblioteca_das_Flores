@@ -349,23 +349,14 @@ public class BibliotecaMain {
 
 				System.out.println("Insira o codigo ID do livro que deseja excluir : ");
 				String idd = leitura.nextLine();
-				long idDelete = Long.valueOf(idd);
-
-				for (Livro livro3 : dao.listar()) {
-					if ((livro3.getId()) == idDelete) {
-
-						acervo.remove(livro3);
-
-						verif2 = 2;
-					}
-
-				}
+				int idDelete = Integer.valueOf(idd);
 				
-				if (verif2 != 2) {
+				Livro livroEncontrado = dao.Buscarid(idDelete);
 
-					System.out.println("Este codigo ID nao foi encontrado em nosso acervo !");
+				if (livroEncontrado != null) {
+					System.out.println("Excluido com sucesso!!");
 				} else {
-					System.out.println("Livro excluido com sucesso !!");
+					System.out.println("Livro não encontado no acervo!!");
 				}
 
 				break;
