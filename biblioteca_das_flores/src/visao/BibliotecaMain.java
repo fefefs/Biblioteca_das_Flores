@@ -12,6 +12,8 @@ public class BibliotecaMain {
 	private static ArrayList<Autor> autores = new ArrayList<>();
 
 	public static void criaAutores() {
+		
+	
 	
 		Autor vitorMartins = new Autor();
 		vitorMartins.setIdAutor(1);
@@ -66,6 +68,9 @@ public class BibliotecaMain {
 		criaAutores();
 
 		Scanner leitura = new Scanner(System.in);
+		LivroDAO dao1 = new LivroDAO();
+		dao1.listar();
+		
 
 		
 
@@ -172,7 +177,8 @@ public class BibliotecaMain {
 				break;
 
 			case 2:
-				for (Livro livro2 : dao.listar()) {
+				
+				for (Livro livro2 : dao1.listar()) {
 					System.out.println("O nome do livro :" + livro2.getNomeLivro());
 					System.out.println("O codigo :" + livro2.getId());
 									
@@ -191,7 +197,7 @@ public class BibliotecaMain {
 				String id = leitura.nextLine();
 				long idBusca = Long.valueOf(id);
 
-				for (Livro livro3 : dao.listar()) {
+				for (Livro livro3 : dao1.listar()) {
 					if ((livro3.getId()) == idBusca) {
 						System.out.println("O nome do livro :" + livro3.getNomeLivro());
 						System.out.println("O codigo :" + livro3.getId());
@@ -228,13 +234,13 @@ public class BibliotecaMain {
 					}
 				}
 
-				for (Livro livro2 : dao.listar()) {
+				for (Livro livro2 : dao1.listar()) {
 
 					if (Categoriaalterar == 1) {
 						System.out.println("Qual o Id do livro?");
 						String idtxt = leitura.nextLine();
 						int codigover = Integer.valueOf(idtxt);
-						for (Livro livro3 : dao.listar()) {
+						for (Livro livro3 : dao1.listar()) {
 							if(codigover == livro3.getId()) {
 							System.out.println("Qual o novo nome do livro");
 							String novonome = leitura.nextLine();
@@ -304,7 +310,7 @@ public class BibliotecaMain {
 						System.out.println("Qual o Id do livro?");
 					String	 idtxt1 = leitura.nextLine();
 					int codigover1 = Integer.valueOf(idtxt1);
-						for (Livro livro3 : dao.listar()) {
+						for (Livro livro3 : dao1.listar()) {
                       if(codigover1 == livro3.getId()) {
 						System.out.println("Qual a diponibilidade");
 						System.out.println("Digite 1 se esta disponinel e 2 caso esteja alugado");
@@ -325,7 +331,7 @@ public class BibliotecaMain {
 						System.out.println("Qual o Id do livro?");
 						String idtxt2 = leitura.nextLine();
 						int codigover2 = Integer.valueOf(idtxt2);
-						for (Livro livro3 : dao.listar()) {
+						for (Livro livro3 : dao1.listar()) {
 							if(codigover2 == livro3.getId()) {
 
 						System.out.println("Qual a quantidade de paginas");
@@ -345,19 +351,22 @@ public class BibliotecaMain {
 				break;
 				
 			case 5:
-				int verif2 = 0;
 
 				System.out.println("Insira o codigo ID do livro que deseja excluir : ");
 				String idd = leitura.nextLine();
 				int idDelete = Integer.valueOf(idd);
 				
-				Livro livroEncontrado = dao.Buscarid(idDelete);
+				LivroDAO dao2 = new LivroDAO();
+				dao2.Buscarid(idDelete);
+				
+				Livro livroEncontrado = dao2.Buscarid(idDelete);
 
 				if (livroEncontrado != null) {
 					System.out.println("Excluido com sucesso!!");
 				} else {
 					System.out.println("Livro não encontado no acervo!!");
 				}
+				
 
 				break;
 
