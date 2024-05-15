@@ -9,6 +9,8 @@ import modelo.Livro;
 
 public class BibliotecaMain {
 
+	
+	
 	private static ArrayList<Autor> autores = new ArrayList<>();
 
 	public static void criaAutores() {
@@ -46,17 +48,17 @@ public class BibliotecaMain {
 		autores.add(elayneBaeta);
 		
 		Autor stephenKing = new Autor();
-		stephenKing.setIdAutor(8);
+		stephenKing.setIdAutor(7);
 		stephenKing.setNomedoautor("Stephen King");
 		autores.add(stephenKing);
 		
 		Autor machadoAssis = new Autor();
-		machadoAssis.setIdAutor(9);
+		machadoAssis.setIdAutor(8);
 		machadoAssis.setNomedoautor("Machado de Assis");
 		autores.add(machadoAssis);
 		
 		Autor poe = new Autor();
-		poe.setIdAutor(10);
+		poe.setIdAutor(9);
 		poe.setNomedoautor("Edgar Alan Poe");
 		autores.add(poe);
 	}
@@ -64,14 +66,11 @@ public class BibliotecaMain {
 
 	public static void main(String[] args) {
 		
+		LivroDAO dao = LivroDAO.getInstancia();
 		
 		criaAutores();
 
 		Scanner leitura = new Scanner(System.in);
-		LivroDAO dao1 = new LivroDAO();
-		dao1.listar();
-		
-
 		
 
 		int r = -1;
@@ -169,7 +168,6 @@ public class BibliotecaMain {
 					
 				}
 			
-				LivroDAO dao = new LivroDAO();
 				dao.cadastrar(livro);
 				
 				System.out.println("\nLivro cadastrado com sucesso !!\n");
@@ -178,7 +176,7 @@ public class BibliotecaMain {
 
 			case 2:
 				
-				for (Livro livro2 : dao1.listar()) {
+				for (Livro livro2 : dao.listar()) {
 					System.out.println("O nome do livro :" + livro2.getNomeLivro());
 					System.out.println("O codigo :" + livro2.getId());
 									
@@ -197,7 +195,7 @@ public class BibliotecaMain {
 				String id = leitura.nextLine();
 				long idBusca = Long.valueOf(id);
 
-				for (Livro livro3 : dao1.listar()) {
+				for (Livro livro3 : dao.listar()) {
 					if ((livro3.getId()) == idBusca) {
 						System.out.println("O nome do livro :" + livro3.getNomeLivro());
 						System.out.println("O codigo :" + livro3.getId());
@@ -234,13 +232,13 @@ public class BibliotecaMain {
 					}
 				}
 
-				for (Livro livro2 : dao1.listar()) {
+				for (Livro livro2 : dao.listar()) {
 
 					if (Categoriaalterar == 1) {
 						System.out.println("Qual o Id do livro?");
 						String idtxt = leitura.nextLine();
 						int codigover = Integer.valueOf(idtxt);
-						for (Livro livro3 : dao1.listar()) {
+						for (Livro livro3 : dao.listar()) {
 							if(codigover == livro3.getId()) {
 							System.out.println("Qual o novo nome do livro");
 							String novonome = leitura.nextLine();
@@ -310,7 +308,7 @@ public class BibliotecaMain {
 						System.out.println("Qual o Id do livro?");
 					String	 idtxt1 = leitura.nextLine();
 					int codigover1 = Integer.valueOf(idtxt1);
-						for (Livro livro3 : dao1.listar()) {
+						for (Livro livro3 : dao.listar()) {
                       if(codigover1 == livro3.getId()) {
 						System.out.println("Qual a diponibilidade");
 						System.out.println("Digite 1 se esta disponinel e 2 caso esteja alugado");
@@ -331,7 +329,7 @@ public class BibliotecaMain {
 						System.out.println("Qual o Id do livro?");
 						String idtxt2 = leitura.nextLine();
 						int codigover2 = Integer.valueOf(idtxt2);
-						for (Livro livro3 : dao1.listar()) {
+						for (Livro livro3 : dao.listar()) {
 							if(codigover2 == livro3.getId()) {
 
 						System.out.println("Qual a quantidade de paginas");
@@ -356,10 +354,9 @@ public class BibliotecaMain {
 				String idd = leitura.nextLine();
 				int idDelete = Integer.valueOf(idd);
 				
-				LivroDAO dao2 = new LivroDAO();
-				dao2.Buscarid(idDelete);
 				
-				Livro livroEncontrado = dao2.Buscarid(idDelete);
+				
+				Livro livroEncontrado = dao.Buscarid(idDelete);
 
 				if (livroEncontrado != null) {
 					System.out.println("Excluido com sucesso!!");

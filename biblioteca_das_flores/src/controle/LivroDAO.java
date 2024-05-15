@@ -5,14 +5,26 @@ import java.util.ArrayList;
 import modelo.Livro;
 
 public class LivroDAO {
+	
 	private ArrayList<Livro> acervo;
 	
 	private int geradorID;
 	
+	private static LivroDAO Instancia;
 	
-	public LivroDAO() {
+	
+	
+	public static LivroDAO getInstancia() {
+		
+		if(Instancia == null) {
+			Instancia = new LivroDAO();
+		}
+		return Instancia;
+	}
+	
+	private LivroDAO() {
 	 this.acervo = new ArrayList<>();
-	 this.geradorID=0;
+	 this.geradorID=1;
 	}
 	
 	public int cadastrar(Livro livro) {
@@ -37,6 +49,16 @@ public class LivroDAO {
 			}
 		}
 		return null;
+	}
+	
+	public Livro atualiza(int codi) {
+		
+		for(Livro livro2 : acervo) {
+			
+		}
+		
+		return livro;
+		
 	}
 	
 	public boolean remover(Livro  livro) {
