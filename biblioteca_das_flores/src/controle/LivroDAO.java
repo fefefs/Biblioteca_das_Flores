@@ -51,19 +51,17 @@ public class LivroDAO {
 		return null;
 	}
 	
-	public Livro atualiza(int codi) {
+	public Livro atualizar(Livro livro) {
 		
-		for(Livro livro2 : acervo) {
-			
-		}
-		
+		acervo.add(livro);
 		return livro;
-		
 	}
 	
-	public boolean remover(Livro  livro) {
-		boolean verif = acervo.remove(livro);
-		return verif;
+	public Livro remover(Livro  livro) {
+		
+		 acervo.remove(livro);
+		 
+		return null;
 	}
 	
 	

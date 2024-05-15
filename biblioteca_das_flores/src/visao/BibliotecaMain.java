@@ -190,28 +190,23 @@ public class BibliotecaMain {
 				break;
 
 			case 3:
-				int verif = 0;
+				
 				System.out.println("Insira o codigo ID do livro que deseja procurar : ");
 				String id = leitura.nextLine();
-				long idBusca = Long.valueOf(id);
+			    int idBusca = Integer.valueOf(id);
+			
+				
+				Livro livroE= dao.Buscarid(idBusca);
 
-				for (Livro livro3 : dao.listar()) {
-					if ((livro3.getId()) == idBusca) {
-						System.out.println("O nome do livro :" + livro3.getNomeLivro());
-						System.out.println("O codigo :" + livro3.getId());
-						System.out.println("O autor :" + livro3.getAutor().getNomedoautor());
-						System.out.println("A disponibilidade :" + livro3.isDisponivel());
-						System.out.println("A quantidade de paginas :" + livro3.getQuantPaginas());
-						
-
-						verif = 2;
-					}
-
-				}
-				if (verif != 2) {
-
-					System.out.println("Este codigo ID nao foi encontrado em nosso acervo !!\n");
-				}
+						System.out.println("O nome do livro :" + livroE.getNomeLivro());
+						System.out.println("O codigo :" + livroE.getId());
+						System.out.println("O autor :" + livroE.getAutor().getNomedoautor());
+						System.out.println("A disponibilidade :" + livroE.isDisponivel());
+						System.out.println("A quantidade de paginas :" + livroE.getQuantPaginas());
+					
+						if (livroE == null) {
+							System.out.println("Livro não encontado no acervo!!");
+						}
 
 				break;
 			case 4:
@@ -231,27 +226,26 @@ public class BibliotecaMain {
 						Categoriaalterar = Integer.valueOf(opcao);
 					}
 				}
+				
+				System.out.println("Qual o Id do livro?");
+				String idtxt = leitura.nextLine();
+				int codigover = Integer.valueOf(idtxt);
+				
+				Livro livroA = dao.Buscarid(codigover);
 
 				for (Livro livro2 : dao.listar()) {
 
 					if (Categoriaalterar == 1) {
-						System.out.println("Qual o Id do livro?");
-						String idtxt = leitura.nextLine();
-						int codigover = Integer.valueOf(idtxt);
-						for (Livro livro3 : dao.listar()) {
-							if(codigover == livro3.getId()) {
-							System.out.println("Qual o novo nome do livro");
-							String novonome = leitura.nextLine();
-							livro2.setNomeLivro(novonome);
-							System.out.println("Nome do livro atualizado com sucesso!!");
+						
+						System.out.println("Qual o novo nome do livro");
+						String novonome = leitura.nextLine();
+						livroA.setNomeLivro(novonome);
+						System.out.println("Nome do livro atualizado com sucesso!!");
 							
+							dao.atualizar(livroA);
+							break;		
 						}
 							
-						}
-						break;
-
-					}
-
 					else if (Categoriaalterar == 2) {
 
 						System.out.println("O autor novo deste livro já está cadastrado em nosso acervo ?");
@@ -275,7 +269,8 @@ public class BibliotecaMain {
 							
 							for (Autor autor2 : autores) {
 								if (autor2.getIdAutor() == idAutor ) {
-									livro2.setAutor(autor2);
+									livroA.setAutor(autor2);
+									dao.atualizar(livroA);
 								}
 							}
 						} else if (disp2 == 2) {
@@ -292,7 +287,8 @@ public class BibliotecaMain {
 							autor2.setIdAutor(idAut);
 							
 							autores.add(autor2);
-							livro2.setAutor(autor2);
+							livroA.setAutor(autor2);
+							dao.atualizar(livroA);
 							
 							System.out.println("***Autor(a) cadastrado com sucesso !!***");
 							
@@ -305,40 +301,34 @@ public class BibliotecaMain {
 
 					else if (Categoriaalterar == 3) {
 						
-						System.out.println("Qual o Id do livro?");
-					String	 idtxt1 = leitura.nextLine();
-					int codigover1 = Integer.valueOf(idtxt1);
-						for (Livro livro3 : dao.listar()) {
-                      if(codigover1 == livro3.getId()) {
+						
 						System.out.println("Qual a diponibilidade");
 						System.out.println("Digite 1 se esta disponinel e 2 caso esteja alugado");
 						String novaDispo = leitura.nextLine();
 						int novaDispover =Integer.valueOf(novaDispo);
 						if (novaDispover == 1) {
-							livro2.setDisponivel(true);
+							livroA.setDisponivel(true);
 						} else if (novaDispover == 2) {
-							livro2.setDisponivel(false);
+							livroA.setDisponivel(false);
 						}
+						dao.atualizar(livroA);
+						
 						System.out.println("Disponibilidade atualizada com sucesso!!");
 
-					}
-						}
+					
 						break;
 					}
+					
 					else if (Categoriaalterar == 4) {
-						System.out.println("Qual o Id do livro?");
-						String idtxt2 = leitura.nextLine();
-						int codigover2 = Integer.valueOf(idtxt2);
-						for (Livro livro3 : dao.listar()) {
-							if(codigover2 == livro3.getId()) {
-
-						System.out.println("Qual a quantidade de paginas");
+						
+						System.out.println("Qual a nova quantidade de paginas");
 						String nqtp = leitura.nextLine();
 						Integer nQuantPg = Integer.valueOf(nqtp);
-						livro2.setQuantPaginas(nQuantPg);
+						livroA.setQuantPaginas(nQuantPg);
+						dao.atualizar(livroA);
+						
 						System.out.println("A quantidade de paginas atualizada com sucesso!!");
-						}
-						}
+
 						break;
 
 					}
@@ -354,9 +344,9 @@ public class BibliotecaMain {
 				String idd = leitura.nextLine();
 				int idDelete = Integer.valueOf(idd);
 				
-				
-				
 				Livro livroEncontrado = dao.Buscarid(idDelete);
+				
+				dao.remover(livroEncontrado);
 
 				if (livroEncontrado != null) {
 					System.out.println("Excluido com sucesso!!");
