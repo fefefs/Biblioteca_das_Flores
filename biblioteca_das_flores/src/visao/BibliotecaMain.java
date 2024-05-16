@@ -227,15 +227,18 @@ public class BibliotecaMain {
 					}
 				}
 				
-				System.out.println("Qual o Id do livro?");
-				String idtxt = leitura.nextLine();
-				int codigover = Integer.valueOf(idtxt);
-				
-				Livro livroA = dao.Buscarid(codigover);
-				
+			if(Categoriaalterar == 0) {
+				break;
+			}
+			
 
 				for (Livro livro2 : dao.listar()) {
 					
+					System.out.println("Qual o Id do livro?");
+					String idtxt = leitura.nextLine();
+					int codigover = Integer.valueOf(idtxt);
+					
+					Livro livroA = dao.Buscarid(codigover);
 					
 
 					if (Categoriaalterar == 1) {
@@ -359,13 +362,14 @@ public class BibliotecaMain {
 					System.out.println("Livro não encontado no acervo!!");
 				}
 				
-
+			
 				break;
 
 			}
-
+		 
 		}
-
+		   System.out.println("Voce saiu do sistema!");
 	}
+	
 
 }
