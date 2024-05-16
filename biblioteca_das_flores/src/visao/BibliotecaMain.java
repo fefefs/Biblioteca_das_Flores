@@ -204,9 +204,6 @@ public class BibliotecaMain {
 						System.out.println("A disponibilidade :" + livroE.isDisponivel());
 						System.out.println("A quantidade de paginas :" + livroE.getQuantPaginas());
 					
-						if (livroE == null) {
-							System.out.println("Livro não encontado no acervo!!");
-						}
 
 				break;
 			case 4:
@@ -216,7 +213,7 @@ public class BibliotecaMain {
 				while(Categoriaalterar !=0) {
 
 				System.out.println("\n//////////////\nOpçoes para alterar:\n 0-Sair de alterar\n 1-Nome do livro\n 2-Autor\n 3-Livro disponivel\n 4-Quantidade de paginas\n///////////////\n");
-				System.out.println("O que voce deseja mudar? Por favor insera o numero da opcao \n");
+				System.out.println("O que voce deseja mudar? \n");
 				String opcao = leitura.nextLine();
 				Categoriaalterar = Integer.valueOf(opcao);
 				if ( r < 0 || r > 4) {
