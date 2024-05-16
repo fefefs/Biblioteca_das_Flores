@@ -53,7 +53,7 @@ public class LivroDAO {
 	
 	public Livro atualizar(Livro livro) {
 		
-		acervo.add(livro);
+		//acervo.add(livro);
 		return livro;
 	}
 	

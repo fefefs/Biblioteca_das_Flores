@@ -232,8 +232,11 @@ public class BibliotecaMain {
 				int codigover = Integer.valueOf(idtxt);
 				
 				Livro livroA = dao.Buscarid(codigover);
+				
 
 				for (Livro livro2 : dao.listar()) {
+					
+					
 
 					if (Categoriaalterar == 1) {
 						
@@ -332,7 +335,9 @@ public class BibliotecaMain {
 						break;
 
 					}
+					break;
 				  }
+				
 				}
 				System.out.println("//////////////Voce saiu da aba de atualizacoes/////////////\n");
 			
